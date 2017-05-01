@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+
+namespace SilentRed.Infrastructure.Tests
+{
+    public class PipelineTestCommand : ICommand
+    {
+        public void Add(Type type)
+        {
+            _typesVisited.Add(type);
+        }
+
+        public List<Type> TypesVisited() => _typesVisited;
+        private readonly List<Type> _typesVisited = new List<Type>();
+    }
+}

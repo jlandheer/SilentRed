@@ -1,0 +1,62 @@
+using System;
+using System.Reflection;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace SilentRed.Infrastructure.Tests
+{
+    public class FirstTest
+    {
+        [Fact]
+        public async Task GivenACommandWithAFailingValidatorAFailedResultIsReturned()
+        {
+            var assembly = typeof(CommandWithEmptyHandler).GetTypeInfo().Assembly;
+            var container = SilentRedTestHelpers.GetContainer(assembly);
+
+            var commandBus = container.GetInstance<ICommandBus>();
+
+            var res = await commandBus.Send(new CommandWithValidator());
+
+            Assert.False(res.Success);
+        }
+
+        [Fact]
+        public async Task GivenACommandWithASuccesHandlerASuccessResultIsReturned()
+        {
+            var assembly = typeof(CommandWithEmptyHandler).GetTypeInfo().Assembly;
+            var container = SilentRedTestHelpers.GetContainer(assembly);
+
+            var commandBus = container.GetInstance<ICommandBus>();
+
+            var res = await commandBus.Send(new CommandWithEmptyHandler());
+
+            Assert.True(res.Success);
+        }
+
+        [Fact]
+        public async Task GivenACommandWithoutAnHandlerTheCorrectExceptionIsThrown()
+        {
+            var assembly = typeof(CommandWithEmptyHandler).GetTypeInfo().Assembly;
+            var container = SilentRedTestHelpers.GetContainer(assembly);
+
+            var commandBus = container.GetInstance<ICommandBus>();
+
+            var ex = await Act.TryAsync(() => commandBus.Send(new CommandWithoutHandler()));
+
+            Assert.IsType<NoCommandHandlerFoundException>(ex);
+        }
+
+        [Fact]
+        public async Task GivenNullAsACommandAnNullReferenceExceIsThrown()
+        {
+            var assembly = typeof(CommandWithEmptyHandler).GetTypeInfo().Assembly;
+            var container = SilentRedTestHelpers.GetContainer(assembly);
+
+            var commandBus = container.GetInstance<ICommandBus>();
+
+            var ex = await Act.TryAsync(() => commandBus.Send((CommandWithValidator)null));
+
+            Assert.IsType<ArgumentNullException>(ex);
+        }
+    }
+}

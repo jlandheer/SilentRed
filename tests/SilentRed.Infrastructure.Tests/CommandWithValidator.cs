@@ -1,0 +1,27 @@
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace SilentRed.Infrastructure.Tests
+{
+    public class CommandWithValidator : ICommand { }
+
+    public class CommandWithValidatorHandler : ICommandHandler<CommandWithValidator>
+    {
+        public Task<CommandResult> Handle(CommandWithValidator command, IDictionary<string, object> headers, CancellationToken cancellationToken)
+        {
+            return CommandResult.SucceededTask;
+        }
+    }
+
+    public class CommandWithValidatorFailingValidator : ICommandValidator<CommandWithValidator>
+    {
+        public Task<CommandResult> ValidateAsync(
+            CommandWithValidator command,
+            IDictionary<string, object> headers,
+            CancellationToken cancellation = new CancellationToken())
+        {
+            return CommandResult.FailedTask("Foutje, bedankt.");
+        }
+    }
+}

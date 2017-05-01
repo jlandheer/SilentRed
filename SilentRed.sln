@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{60B89CA1-5841-48F2-80DC-A78C207DE0D6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		build.cake = build.cake
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DA318ECC-C864-472D-8EC2-14AA4D43FEDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2B930799-2B36-40AB-90DB-D6C6C1EE9F74}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{79BE8DE8-751D-4475-805C-3F846A9D61E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentRed.Infrastructure", "src\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj", "{B7408959-0459-4CFB-8079-5DAFB83AE3D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentRed.Infrastructure.Mediatr", "src\SilentRed.Infrastructure.Mediatr\SilentRed.Infrastructure.Mediatr.csproj", "{A10746A2-2D38-4513-B5AC-DD925C4DBE86}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentRed.Infrastructure.SimpleInjector", "src\SilentRed.Infrastructure.SimpleInjector\SilentRed.Infrastructure.SimpleInjector.csproj", "{61599456-E1E8-49B6-B3BE-07AD430C2A7B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentRed.SimpleInjector.Extensions.Mediatr", "src\SilentRed.SimpleInjector.Extensions.Mediatr\SilentRed.SimpleInjector.Extensions.Mediatr.csproj", "{611E3F81-6130-4E2B-BE2E-4FD025D4F344}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentRed.WebCore", "sample\SilentRed.WebCore\SilentRed.WebCore.csproj", "{78ADC0D8-ED8E-4F4D-B512-571EE9B85A74}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SilentRed.Infrastructure.Tests", "tests\SilentRed.Infrastructure.Tests\SilentRed.Infrastructure.Tests.csproj", "{DDEB702F-659E-41E7-871D-6DBD558DBBF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentRed.Infrastructure.FluentValidation", "src\SilentRed.Infrastructure.FluentValidation\SilentRed.Infrastructure.FluentValidation.csproj", "{08E4D22D-C7E5-4765-A00D-08AD23654743}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7408959-0459-4CFB-8079-5DAFB83AE3D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7408959-0459-4CFB-8079-5DAFB83AE3D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7408959-0459-4CFB-8079-5DAFB83AE3D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7408959-0459-4CFB-8079-5DAFB83AE3D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10746A2-2D38-4513-B5AC-DD925C4DBE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10746A2-2D38-4513-B5AC-DD925C4DBE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10746A2-2D38-4513-B5AC-DD925C4DBE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10746A2-2D38-4513-B5AC-DD925C4DBE86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61599456-E1E8-49B6-B3BE-07AD430C2A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61599456-E1E8-49B6-B3BE-07AD430C2A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61599456-E1E8-49B6-B3BE-07AD430C2A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61599456-E1E8-49B6-B3BE-07AD430C2A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{611E3F81-6130-4E2B-BE2E-4FD025D4F344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611E3F81-6130-4E2B-BE2E-4FD025D4F344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611E3F81-6130-4E2B-BE2E-4FD025D4F344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611E3F81-6130-4E2B-BE2E-4FD025D4F344}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78ADC0D8-ED8E-4F4D-B512-571EE9B85A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78ADC0D8-ED8E-4F4D-B512-571EE9B85A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78ADC0D8-ED8E-4F4D-B512-571EE9B85A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78ADC0D8-ED8E-4F4D-B512-571EE9B85A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDEB702F-659E-41E7-871D-6DBD558DBBF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDEB702F-659E-41E7-871D-6DBD558DBBF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDEB702F-659E-41E7-871D-6DBD558DBBF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDEB702F-659E-41E7-871D-6DBD558DBBF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E4D22D-C7E5-4765-A00D-08AD23654743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E4D22D-C7E5-4765-A00D-08AD23654743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E4D22D-C7E5-4765-A00D-08AD23654743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E4D22D-C7E5-4765-A00D-08AD23654743}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B7408959-0459-4CFB-8079-5DAFB83AE3D2} = {DA318ECC-C864-472D-8EC2-14AA4D43FEDA}
+		{A10746A2-2D38-4513-B5AC-DD925C4DBE86} = {DA318ECC-C864-472D-8EC2-14AA4D43FEDA}
+		{61599456-E1E8-49B6-B3BE-07AD430C2A7B} = {DA318ECC-C864-472D-8EC2-14AA4D43FEDA}
+		{611E3F81-6130-4E2B-BE2E-4FD025D4F344} = {DA318ECC-C864-472D-8EC2-14AA4D43FEDA}
+		{78ADC0D8-ED8E-4F4D-B512-571EE9B85A74} = {79BE8DE8-751D-4475-805C-3F846A9D61E8}
+		{DDEB702F-659E-41E7-871D-6DBD558DBBF0} = {2B930799-2B36-40AB-90DB-D6C6C1EE9F74}
+		{08E4D22D-C7E5-4765-A00D-08AD23654743} = {DA318ECC-C864-472D-8EC2-14AA4D43FEDA}
+	EndGlobalSection
+EndGlobal
