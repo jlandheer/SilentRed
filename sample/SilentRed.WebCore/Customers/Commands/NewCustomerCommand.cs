@@ -1,11 +1,11 @@
 ﻿using System;
 using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers.Commands
+namespace SilentRed.WebCore.Customers
 {
     public class NewCustomerCommand : ICommand
     {
-        public Guid Id { get; set; }
         public string Email { get; set; }
+        public Guid Id { get; set; }
     }
 }

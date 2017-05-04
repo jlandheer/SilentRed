@@ -1,7 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using SilentRed.Infrastructure.Runtime;
 using SimpleInjector;
 
 namespace SilentRed.Infrastructure.SimpleInjector
@@ -29,7 +29,7 @@ namespace SilentRed.Infrastructure.SimpleInjector
             this Container container,
             IEnumerable<Assembly> assemblies = null)
         {
-            var allAssemblies = (assemblies ?? AppDomain.CurrentDomain.GetAssemblies()).ToList();
+            var allAssemblies = (assemblies ?? AppDomain.GetAssemblies()).ToList();
 
             container.RegisterCommands(allAssemblies);
             container.RegisterQueries(allAssemblies);

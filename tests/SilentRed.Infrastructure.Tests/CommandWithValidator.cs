@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Command;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure.Tests
 {
@@ -8,7 +10,10 @@ namespace SilentRed.Infrastructure.Tests
 
     public class CommandWithValidatorHandler : ICommandHandler<CommandWithValidator>
     {
-        public Task<CommandResult> Handle(CommandWithValidator command, IDictionary<string, object> headers, CancellationToken cancellationToken)
+        public Task<CommandResult> Handle(
+            CommandWithValidator command,
+            IDictionary<string, object> headers,
+            CancellationToken cancellationToken)
         {
             return CommandResult.SucceededTask;
         }
@@ -16,12 +21,12 @@ namespace SilentRed.Infrastructure.Tests
 
     public class CommandWithValidatorFailingValidator : ICommandValidator<CommandWithValidator>
     {
-        public Task<CommandResult> ValidateAsync(
+        public Task<IEnumerable<Error>> ValidateAsync(
             CommandWithValidator command,
             IDictionary<string, object> headers,
             CancellationToken cancellation = new CancellationToken())
         {
-            return CommandResult.FailedTask("Foutje, bedankt.");
+            return new Error("Foutje, bedankt.").AsEnumerable().AsTask();
         }
     }
 }

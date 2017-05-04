@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure
 {
-    public interface IQueryAuthorizer<TQuery, TResult>
+    public interface IQueryAuthorizer<in TQuery, TResult>
         where TQuery : IQuery<TResult>
     {
-        Task<QueryResult<TResult>> AuthorizeAsync(TQuery query, IDictionary<string, object> headers, CancellationToken cancellation = default(CancellationToken));
+        Task<IEnumerable<Error>> AuthorizeAsync(
+            TQuery query,
+            IDictionary<string, object> headers,
+            CancellationToken cancellation = default(CancellationToken));
     }
 }

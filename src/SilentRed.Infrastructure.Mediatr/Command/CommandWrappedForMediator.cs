@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using MediatR;
+using SilentRed.Infrastructure.Command;
 
 namespace SilentRed.Infrastructure.Mediatr
 {
@@ -31,8 +32,8 @@ namespace SilentRed.Infrastructure.Mediatr
         where TCommand : ICommand
         where TResult : CommandResult
     {
-        public IDictionary<string, object> Headers { get; }
         public TCommand Command { get; }
+        public IDictionary<string, object> Headers { get; }
 
         internal CommandWrappedForMediator(TCommand command, IDictionary<string, object> headers)
         {

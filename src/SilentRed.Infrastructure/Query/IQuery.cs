@@ -1,4 +1,6 @@
-﻿namespace SilentRed.Infrastructure
+﻿// ReSharper disable UnusedTypeParameter
+
+namespace SilentRed.Infrastructure
 {
     public interface IQuery { }
 

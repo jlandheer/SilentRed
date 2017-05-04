@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using SilentRed.WebCore.Customers.Models;
 
-namespace SilentRed.WebCore.Customers.Queries
+namespace SilentRed.WebCore.Customers
 {
     public class CustomerRepository
     {
         public Task Add(Customer customer)
         {
             if (ExistsInternal(customer.Id))
-                throw new CustomerAlreadyExistsExeption(customer.Id);
+                throw new CustomerAlreadyExistsException(customer.Id);
 
             _customers.Add(customer);
 
@@ -32,7 +32,7 @@ namespace SilentRed.WebCore.Customers.Queries
         {
             var customer = _customers.SingleOrDefault(i => i.Id == customerId);
             if (customer == null)
-                throw new CustomerDoesNotExistExeption(customerId);
+                throw new CustomerDoesNotExistException(customerId);
 
             return Task.FromResult(customer);
         }

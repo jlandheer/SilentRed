@@ -1,40 +1,40 @@
-﻿using System;
+﻿// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedMemberInSuper.Global
+// ReSharper disable MemberCanBePrivate.Local
+// ReSharper disable UnusedAutoPropertyAccessor.Local
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure
 {
     public static class QueryResult
     {
-        public static QueryResult<TResult> Succeeded<TResult>(TResult result) => new SuccessQueryResult<TResult>(result);
-        public static Task<QueryResult<TResult>> SucceededTask<TResult>(TResult result) => Task.FromResult(Succeeded(result));
+        public static QueryResult<TResult> Succeeded<TResult>(TResult result)
+            => new SuccessQueryResult<TResult>(result);
 
-        public static QueryResult<TResult> Failed<TResult>(string error) => new FailedQueryResult<TResult>(new[] { new Error(error) });
-        public static QueryResult<TResult> Failed<TResult>(Error error) => new FailedQueryResult<TResult>(new[] { error });
-        public static QueryResult<TResult> Failed<TResult>(IEnumerable<string> errors) => new FailedQueryResult<TResult>(errors.Select(i => new Error(i)));
-        public static QueryResult<TResult> Failed<TResult>(IEnumerable<Error> errors) => new FailedQueryResult<TResult>(errors);
+        public static Task<QueryResult<TResult>> SucceededTask<TResult>(TResult result)
+            => Task.FromResult(Succeeded(result));
 
-        public static Task<QueryResult<TResult>> FailedTask<TResult>(string error) => Task.FromResult(Failed<TResult>(error));
-        public static Task<QueryResult<TResult>> FailedTask<TResult>(Error error) => Task.FromResult(Failed<TResult>(error));
-        public static Task<QueryResult<TResult>> FailedTask<TResult>(IEnumerable<string> errors) => Task.FromResult(Failed<TResult>(errors));
-        public static Task<QueryResult<TResult>> FailedTask<TResult>(IEnumerable<Error> errors) => Task.FromResult(Failed<TResult>(errors));
+        public static QueryResult<TResult> Failed<TResult>(string at, IEnumerable<Error> errors)
+            => new FailedQueryResult<TResult>(at, errors);
 
-        public class FailedQueryResult<TResult> : QueryResult<TResult>
+        public static Task<QueryResult<TResult>> FailedTask<TResult>(string at, IEnumerable<Error> errors)
+            => Task.FromResult(Failed<TResult>(at, errors));
+
+        private class FailedQueryResult<TResult> : QueryResult<TResult>
         {
-            public override TResult Value => throw new CannotAccessFailedResultValue();
-            public override IEnumerable<Error> Errors { get; }
+            public string At { get; }
+            public sealed override IEnumerable<Error> Errors { get; }
+            public override TResult Value => throw new CannotAccessFailedResultValueException();
 
-            public FailedQueryResult(IEnumerable<Error> errors) : base(false)
+            public FailedQueryResult(string at, IEnumerable<Error> errors) : base(false)
             {
-                Errors = new ReadOnlyCollection<Error>(
-                    (errors ?? new List<Error>())
-                    .GroupBy(i => new { i.PropertyName, i.AttemptedValue })
-                    .Select(
-                        i => new Error(i.SelectMany(e => e.Messages), i.Key.PropertyName, i.Key.AttemptedValue))
-                    .Where(i => i.Messages.Any())
-                    .ToList());
+                At = at;
+                Errors = new ReadOnlyCollection<Error>((errors ?? new List<Error>()).Flatten());
 
                 if (!Errors.Any())
                     throw new InvalidOperationException("Need at least one error.");
@@ -43,8 +43,8 @@ namespace SilentRed.Infrastructure
 
         public class SuccessQueryResult<TResult> : QueryResult<TResult>
         {
-            public override TResult Value { get; }
             public override IEnumerable<Error> Errors { get; } = new List<Error>();
+            public override TResult Value { get; }
 
             public SuccessQueryResult(TResult result) : base(true)
             {
@@ -55,10 +55,10 @@ namespace SilentRed.Infrastructure
 
     public abstract class QueryResult<TResult>
     {
-        public abstract TResult Value { get; }
-        public bool Success { get; }
-        public bool Fail => !Success;
         public abstract IEnumerable<Error> Errors { get; }
+        public bool Fail => !Success;
+        public bool Success { get; }
+        public abstract TResult Value { get; }
 
         protected QueryResult(bool success)
         {

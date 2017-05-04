@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using SilentRed.Infrastructure.Command;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure.Mediatr
 {
@@ -19,7 +21,9 @@ namespace SilentRed.Infrastructure.Mediatr
 
             try
             {
-                return _mediator.Send(new CommandWrappedForMediator<TCommand, CommandResult>(command, headers), cancellationToken);
+                return _mediator.Send(
+                    new CommandWrappedForMediator<TCommand, CommandResult>(command, headers),
+                    cancellationToken);
             }
             catch (InvalidOperationException ex)
             {

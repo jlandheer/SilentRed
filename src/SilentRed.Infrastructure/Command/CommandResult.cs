@@ -1,38 +1,53 @@
-﻿using System;
+﻿// ReSharper disable MemberCanBePrivate.Global
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable UnusedMemberInSuper.Global
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Command
 {
-    public class CommandResult
+    public abstract class CommandResult
     {
-        public static CommandResult Succeeded = new CommandResult();
-        public static Task<CommandResult> SucceededTask = Task.FromResult(Succeeded);
+        public static readonly CommandResult Succeeded = new SuccessCommandResult();
+        public static readonly Task<CommandResult> SucceededTask = Task.FromResult(Succeeded);
 
-        public static CommandResult Failed(string error) => new CommandResult(new[] { new Error(error) });
-        public static CommandResult Failed(Error error) => new CommandResult(new[] { error });
-        public static CommandResult Failed(IEnumerable<string> errors) => new CommandResult(errors.Select(i => new Error(i)));
-        public static CommandResult Failed(IEnumerable<Error> errors) => new CommandResult(errors);
+        public static CommandResult Failed(string at, IEnumerable<Error> errors)
+            => new FailedCommandResult(at, errors);
 
-        public static Task<CommandResult> FailedTask(string error) => Task.FromResult(Failed(error));
-        public static Task<CommandResult> FailedTask(Error error) => Task.FromResult(Failed(error));
-        public static Task<CommandResult> FailedTask(IEnumerable<string> errors) => Task.FromResult(Failed(errors));
-        public static Task<CommandResult> FailedTask(IEnumerable<Error> errors) => Task.FromResult(Failed(errors));
+        public static Task<CommandResult> FailedTask(string at, IEnumerable<Error> errors)
+            => Task.FromResult(Failed(at, errors));
+
+        protected abstract IEnumerable<Error> Errors { get; }
+        public bool Fail => !Success;
 
         public bool Success { get; }
-        public bool Fail => !Success;
-        public IEnumerable<Error> Errors { get; }
 
-        private CommandResult()
+        protected CommandResult(bool success)
         {
-            Errors = new ReadOnlyCollection<Error>(new List<Error>());
-            Success = true;
+            Success = success;
         }
+    }
 
-        private CommandResult(IEnumerable<Error> errors)
+    public class SuccessCommandResult : CommandResult
+    {
+        protected sealed override IEnumerable<Error> Errors => new List<Error>();
+        public SuccessCommandResult() : base(true) { }
+    }
+
+    public class FailedCommandResult : CommandResult
+    {
+        public string At { get; }
+        protected sealed override IEnumerable<Error> Errors { get; }
+
+        public FailedCommandResult(string at, IEnumerable<Error> errors) : base(false)
         {
+            At = at;
+
             Errors = new ReadOnlyCollection<Error>(
                 (errors ?? new List<Error>())
                 .GroupBy(i => new { i.PropertyName, i.AttemptedValue })
@@ -42,8 +57,6 @@ namespace SilentRed.Infrastructure
 
             if (!Errors.Any())
                 throw new InvalidOperationException("Need at least one error.");
-
-            Success = false;
         }
     }
 }

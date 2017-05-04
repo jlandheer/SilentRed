@@ -1,5 +1,6 @@
-﻿using System;
-using SilentRed.WebCore.Customers.Commands;
+﻿// ReSharper disable UnusedAutoPropertyAccessor.Local
+
+using System;
 
 namespace SilentRed.WebCore.Customers.Models
 {
@@ -12,12 +13,13 @@ namespace SilentRed.WebCore.Customers.Models
             State = CustomerState.New;
         }
 
-        public Guid Id { get; private set; }
-
-        public CustomerState State { get; private set; }
         public string Email { get; private set; }
         public string Gender { get; private set; }
+
+        public Guid Id { get; private set; }
         public string Name { get; private set; }
         public string Phone { get; private set; }
+
+        public CustomerState State { get; private set; }
     }
 }

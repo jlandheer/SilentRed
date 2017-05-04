@@ -7,9 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SilentRed.Infrastructure;
 using SilentRed.Infrastructure.Mediatr;
+using SilentRed.Infrastructure.Runtime;
 using SilentRed.Infrastructure.SimpleInjector;
 using SilentRed.SimpleInjector.Extensions.Mediatr;
-using SilentRed.WebCore.Customers.Commands;
+using SilentRed.WebCore.Customers;
 using SimpleInjector;
 
 namespace SilentRed.WebCore
@@ -36,7 +37,7 @@ namespace SilentRed.WebCore
             services.AddMvc();
 
             var container = new Container();
-            var assemblies = AppDomain.CurrentDomain.GetAssemblies().ToList();
+            var assemblies = AppDomain.GetAssemblies().ToList();
             assemblies.Add(typeof(NewCustomerCommand).GetTypeInfo().Assembly);
 
             container.ConfigureSilentRedWithSimpleInjector(assemblies);

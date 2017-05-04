@@ -1,12 +1,18 @@
-﻿using System.Collections.Generic;
+﻿// ReSharper disable UnusedParameter.Global
+
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure
 {
     public interface ICommandAuthorizer<in TCommand>
         where TCommand : ICommand
     {
-        Task<CommandResult> AuthorizeAsync(TCommand instance, IDictionary<string, object> headers, CancellationToken cancellation = default(CancellationToken));
+        Task<IEnumerable<Error>> AuthorizeAsync(
+            TCommand instance,
+            IDictionary<string, object> headers,
+            CancellationToken cancellation = default(CancellationToken));
     }
 }

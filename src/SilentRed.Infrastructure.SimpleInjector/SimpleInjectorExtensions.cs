@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using SilentRed.Infrastructure.Runtime;
 using SimpleInjector;
 
 namespace SilentRed.Infrastructure.SimpleInjector
@@ -8,7 +9,7 @@ namespace SilentRed.Infrastructure.SimpleInjector
     {
         public static void RegisterCommands(this Container container, IEnumerable<Assembly> assemblies = null)
         {
-            var allAssemblies = assemblies ?? AppDomain.CurrentDomain.GetAssemblies();
+            var allAssemblies = assemblies ?? AppDomain.GetAssemblies();
 
             container.Register(typeof(ICommandHandler<>), allAssemblies);
 
@@ -23,7 +24,7 @@ namespace SilentRed.Infrastructure.SimpleInjector
 
         public static void RegisterQueries(this Container container, IEnumerable<Assembly> assemblies = null)
         {
-            var allAssemblies = assemblies ?? AppDomain.CurrentDomain.GetAssemblies();
+            var allAssemblies = assemblies ?? AppDomain.GetAssemblies();
 
             container.Register(typeof(IQueryHandler<,>), allAssemblies);
 

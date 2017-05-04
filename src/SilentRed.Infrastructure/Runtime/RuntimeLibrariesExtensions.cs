@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyModel;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Runtime
 {
     public static class RuntimeLibrariesExtensions
     {

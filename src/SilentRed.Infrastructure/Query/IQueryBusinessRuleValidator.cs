@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure
 {
-    public interface IQueryBusinessRuleValidator<TQuery, TResult>
+    public interface IQueryBusinessRuleValidator<in TQuery, TResult>
         where TQuery : IQuery<TResult>
     {
-        Task<QueryResult<TResult>> ValidateAsync(TQuery query, IDictionary<string, object> headers, CancellationToken cancellation = default(CancellationToken));
+        Task<IEnumerable<Error>> ValidateAsync(
+            TQuery query,
+            IDictionary<string, object> headers,
+            CancellationToken cancellation = default(CancellationToken));
     }
 }

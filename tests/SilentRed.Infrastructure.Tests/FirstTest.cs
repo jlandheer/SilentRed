@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 using Xunit;
 
 namespace SilentRed.Infrastructure.Tests
@@ -54,7 +55,7 @@ namespace SilentRed.Infrastructure.Tests
 
             var commandBus = container.GetInstance<ICommandBus>();
 
-            var ex = await Act.TryAsync(() => commandBus.Send((CommandWithValidator)null));
+            var ex = await Act.TryAsync(() => commandBus.Send((CommandWithValidator) null));
 
             Assert.IsType<ArgumentNullException>(ex);
         }

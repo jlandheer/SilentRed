@@ -8,12 +8,9 @@ namespace SilentRed.Infrastructure.Mediatr
 {
     public static class MediatorQueryWrapper
     {
-        private static ConcurrentDictionary<Type, bool> _isWrappedCache = new ConcurrentDictionary<Type, bool>();
-        private static ConcurrentDictionary<Type, Type> _wrapperCache = new ConcurrentDictionary<Type, Type>();
-
         public static bool IsWrappedMediatorQueryHandler(this Type serviceType)
         {
-            return _isWrappedCache.GetOrAdd(
+            return IsWrappedCache.GetOrAdd(
                 serviceType,
                 type =>
                 {
@@ -34,10 +31,11 @@ namespace SilentRed.Infrastructure.Mediatr
         }
 
         public static QueryWrappedForMediator<TQueryResult> Wrap<TQueryResult>(
-            IQuery<TQueryResult> query, IDictionary<string, object> headers)
+            IQuery<TQueryResult> query,
+            IDictionary<string, object> headers)
         {
             var type = query.GetType();
-            var returnType = _wrapperCache.GetOrAdd(
+            var returnType = WrapperCache.GetOrAdd(
                 type,
                 serviceType =>
                 {
@@ -47,13 +45,18 @@ namespace SilentRed.Infrastructure.Mediatr
 
             return (QueryWrappedForMediator<TQueryResult>)Activator.CreateInstance(returnType, query, headers);
         }
+
+        private static readonly ConcurrentDictionary<Type, bool> IsWrappedCache =
+            new ConcurrentDictionary<Type, bool>();
+
+        private static readonly ConcurrentDictionary<Type, Type> WrapperCache = new ConcurrentDictionary<Type, Type>();
     }
 
     public abstract class QueryWrappedForMediator<TQueryResult> : IRequest<QueryResult<TQueryResult>>
     {
-        public IDictionary<string, object> Headers { get; protected set; }
+        public IDictionary<string, object> Headers { get; }
 
-        public QueryWrappedForMediator(IQuery<TQueryResult> query, IDictionary<string, object> headers)
+        protected QueryWrappedForMediator(IDictionary<string, object> headers)
         {
             Headers = headers;
         }
@@ -62,9 +65,9 @@ namespace SilentRed.Infrastructure.Mediatr
     public class QueryWrappedForMediator<TQuery, TQueryResult> : QueryWrappedForMediator<TQueryResult>
         where TQuery : IQuery<TQueryResult>
     {
-        public TQuery Query { get; protected set; }
+        public TQuery Query { get; }
 
-        public QueryWrappedForMediator(TQuery query, IDictionary<string, object> headers) : base(query, headers)
+        public QueryWrappedForMediator(TQuery query, IDictionary<string, object> headers) : base(headers)
         {
             Query = query;
         }

@@ -2,26 +2,26 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure
 {
     public class QueryValidation<TQuery, TResult> : IQueryDecorator<TQuery, TResult>
         where TQuery : IQuery<TResult>
     {
-        public async Task<QueryResult<TResult>> Handle(TQuery query, IDictionary<string, object> headers, CancellationToken cancellationToken)
+        public async Task<QueryResult<TResult>> Handle(
+            TQuery query,
+            IDictionary<string, object> headers,
+            CancellationToken cancellationToken)
         {
-            var tasks = _validators
-                .Select(v => v.ValidateAsync(query, headers, cancellationToken));
+            var results = await _validators
+                .Select(v => v.ValidateAsync(query, headers, cancellationToken))
+                .WhenAll()
+                .Flatten();
 
-            var results = await Task.WhenAll(tasks);
-            var failures = results.SelectMany(result => result.Errors)
-                                  .Where(f => f != null)
-                                  .ToList();
-
-            if (failures.Any())
+            if (results.Any())
             {
-                return
-                    QueryResult.Failed<TResult>(failures);
+                return QueryResult.Failed<TResult>(nameof(QueryValidation<TQuery, TResult>), results);
             }
 
             return await _next.Handle(query, headers, cancellationToken);

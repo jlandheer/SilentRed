@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers.Queries
+namespace SilentRed.WebCore.Customers
 {
     public class CustomerDetailsHandler :
         IQueryHandler<GetCustomerDetails, GetCustomerDetails.Result>
     {
-        public async Task<QueryResult<GetCustomerDetails.Result>> Handle(GetCustomerDetails query, IDictionary<string, object> headers, CancellationToken cancellationToken)
+        public async Task<QueryResult<GetCustomerDetails.Result>> Handle(
+            GetCustomerDetails query,
+            IDictionary<string, object> headers,
+            CancellationToken cancellationToken)
         {
             var current = await _repository.Get(query.CustomerId);
-
-            if (current == null)
-            {
-                return
-                    QueryResult.Failed<GetCustomerDetails.Result>($"Id {query.CustomerId} not found.");
-            }
 
             return
                 QueryResult.Succeeded(

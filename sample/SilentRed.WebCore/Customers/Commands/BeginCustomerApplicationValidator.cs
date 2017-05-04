@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using SilentRed.WebCore.Customers.Commands;
 
 namespace SilentRed.WebCore.Customers
 {

@@ -2,10 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using SilentRed.Infrastructure;
+using SilentRed.Infrastructure.Command;
 using SilentRed.WebCore.Customers.Models;
-using SilentRed.WebCore.Customers.Queries;
 
-namespace SilentRed.WebCore.Customers.Commands
+namespace SilentRed.WebCore.Customers
 {
     public class NewCustomerHandler : ICommandHandler<NewCustomerCommand>
     {

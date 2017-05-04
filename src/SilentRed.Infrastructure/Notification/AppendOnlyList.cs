@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Studiekring.Utilities
+namespace SilentRed.Infrastructure
 {
     /// <summary>
     /// Threadsafe lijst om alleen aan toe te voegen.

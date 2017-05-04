@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using MediatR;
 using SilentRed.Infrastructure.Mediatr;
-using SilentRed.Infrastructure;
+using SilentRed.Infrastructure.Runtime;
 using SimpleInjector;
 
 namespace SilentRed.SimpleInjector.Extensions.Mediatr
@@ -31,7 +31,7 @@ namespace SilentRed.SimpleInjector.Extensions.Mediatr
             this Container container,
             IEnumerable<Assembly> assemblies = null)
         {
-            var allAssemblies = (assemblies ?? AppDomain.CurrentDomain.GetAssemblies()).ToList();
+            var allAssemblies = (assemblies ?? AppDomain.GetAssemblies()).ToList();
 
             container.RegisterSingleton<IMediator>(
                 () => new Mediator(container.GetInstance, container.GetAllInstances));

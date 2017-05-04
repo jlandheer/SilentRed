@@ -1,27 +1,12 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SilentRed.Infrastructure;
-using SilentRed.WebCore.Customers.Queries;
+using SilentRed.WebCore.Customers;
 
 namespace SilentRed.WebCore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICommandBus _commandBus;
-        private readonly IQueryBus _queryBus;
-
-        public HomeController(ICommandBus commandBus, IQueryBus queryBus)
-        {
-            _commandBus = commandBus;
-            _queryBus = queryBus;
-        }
-        public async Task<IActionResult> Index()
-        {
-            var queryResult = await _queryBus.Get(new AllCustomers());
-
-            return View(queryResult.Value);
-        }
-
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
@@ -40,5 +25,23 @@ namespace SilentRed.WebCore.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> Index()
+        {
+            var queryResult = await _queryBus.Get(new AllCustomers());
+
+            return View(queryResult.Value);
+        }
+
+        public HomeController(ICommandBus commandBus, IQueryBus queryBus)
+        {
+            _commandBus = commandBus;
+            _queryBus = queryBus;
+        }
+
+        // ReSharper disable once NotAccessedField.Local
+        private readonly ICommandBus _commandBus;
+
+        private readonly IQueryBus _queryBus;
     }
 }

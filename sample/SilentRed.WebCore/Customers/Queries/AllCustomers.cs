@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers.Queries
+namespace SilentRed.WebCore.Customers
 {
     public class AllCustomers : IQuery<AllCustomers.Result>
     {
