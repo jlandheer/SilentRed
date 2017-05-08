@@ -1,6 +1,6 @@
 ﻿// ReSharper disable UnusedTypeParameter
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Query
 {
     public interface IQuery { }
 

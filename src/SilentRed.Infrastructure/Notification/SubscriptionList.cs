@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Notification
 {
     public class SubscriptionList<TNotification> : SubscriptionList
         where TNotification : INotification

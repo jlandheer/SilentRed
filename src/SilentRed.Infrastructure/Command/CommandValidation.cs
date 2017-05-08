@@ -14,15 +14,14 @@ namespace SilentRed.Infrastructure.Command
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
-            var results = await
-                _validators
-                    .Select(v => v.ValidateAsync(command, headers, cancellationToken))
-                    .WhenAll()
-                    .Flatten();
+            var results = await _validators
+                .Select(v => v.ValidateAsync(command, headers, cancellationToken))
+                .WhenAll()
+                .Flatten();
 
             if (results.Any())
             {
-                return CommandResult.Failed(nameof(CommandValidation<TCommand>), results);
+                return new CommandValidationFailed(command, results);
             }
 
             return await _next.Handle(command, headers, cancellationToken);

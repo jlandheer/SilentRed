@@ -1,10 +1,15 @@
 ﻿using System;
+using SilentRed.Infrastructure.Query;
 
 namespace Studiekring.Business.Customers.Queries
 {
     public class GetCustomerDetails : IQuery<GetCustomerDetails.Result>
     {
-        public Guid CustomerId { get; set; }
+        public GetCustomerDetails(Guid customerId)
+        {
+            CustomerId = customerId;
+        }
+        public Guid CustomerId { get; }
 
         public class Result
         {

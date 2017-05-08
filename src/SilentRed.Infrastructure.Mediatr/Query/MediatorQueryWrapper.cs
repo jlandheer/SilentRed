@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 using MediatR;
+using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.Mediatr
 {

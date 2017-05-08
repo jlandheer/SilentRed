@@ -21,7 +21,7 @@ namespace SilentRed.Infrastructure.Command
 
             if (results.Any())
             {
-                return CommandResult.Failed(nameof(CommandAuthorization<TCommand>), results);
+                return new CommandAuthorizationFailed(command, results);
             }
 
             return await _next.Handle(command, headers, cancellationToken);

@@ -1,13 +1,12 @@
 ﻿using FluentValidation;
-using FluentValidation.Internal;
 
 namespace Studiekring.Business.Customers.Commands
 {
-    public class BeginCustomerValidator : AbstractValidator<NewCustomerCommand>
+    public class NewCustomerValidator : AbstractValidator<NewCustomerCommand>
     {
-        public BeginCustomerValidator()
+        public NewCustomerValidator()
         {
             RuleFor(i => i.Email).NotEmpty().EmailAddress();
-        RuleForEach(command => )}
+        }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Notification
 {
     public interface INotificationBus
     {
@@ -16,6 +16,8 @@ namespace SilentRed.Infrastructure
             CancellationToken cancellationToken = default(CancellationToken))
             where TNotification : INotification;
 
-        Task UnSubscribe(Subscription subscription, CancellationToken cancellationToken = default(CancellationToken));
+        Task UnSubscribe(
+            Subscription subscription,
+            CancellationToken cancellationToken = default(CancellationToken));
     }
 }

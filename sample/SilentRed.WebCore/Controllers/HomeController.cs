@@ -1,7 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using SilentRed.Infrastructure;
-using SilentRed.Infrastructure.Command;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace SilentRed.WebCore.Controllers
 {
@@ -26,22 +23,9 @@ namespace SilentRed.WebCore.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var queryResult = await _queryBus.Get(new AllCustomers());
-
-            return View(queryResult.Value);
+            return View();
         }
-
-        public HomeController(ICommandBus commandBus, IQueryBus queryBus)
-        {
-            _commandBus = commandBus;
-            _queryBus = queryBus;
-        }
-
-        // ReSharper disable once NotAccessedField.Local
-        private readonly ICommandBus _commandBus;
-
-        private readonly IQueryBus _queryBus;
     }
 }

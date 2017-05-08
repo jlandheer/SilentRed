@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
 using SilentRed.Infrastructure.Core;
+using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.FluentValidation
 {

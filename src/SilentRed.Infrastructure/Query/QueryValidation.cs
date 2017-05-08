@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SilentRed.Infrastructure.Core;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Query
 {
     public class QueryValidation<TQuery, TResult> : IQueryDecorator<TQuery, TResult>
         where TQuery : IQuery<TResult>
@@ -21,7 +21,7 @@ namespace SilentRed.Infrastructure
 
             if (results.Any())
             {
-                return QueryResult.Failed<TResult>(nameof(QueryValidation<TQuery, TResult>), results);
+                return new QueryValidationFailed<TResult>(query.GetType(), results);
             }
 
             return await _next.Handle(query, headers, cancellationToken);

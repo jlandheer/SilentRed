@@ -1,17 +1,20 @@
 ﻿using System.Linq;
-using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SilentRed.Infrastructure;
 using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Mediatr;
 using SilentRed.Infrastructure.Runtime;
 using SilentRed.Infrastructure.SimpleInjector;
 using SilentRed.SimpleInjector.Extensions.Mediatr;
 using SimpleInjector;
+using Microsoft.EntityFrameworkCore;
+using SilentRed.Infrastructure.Mvc;
+using SilentRed.Infrastructure.Notification;
+using SilentRed.Infrastructure.Query;
+using SilentRed.WebCore.Models;
 
 namespace SilentRed.WebCore
 {
@@ -45,15 +48,14 @@ namespace SilentRed.WebCore
 
             container.RegisterSingleton<ICommandBus, MediatorCommandBus>();
             container.RegisterSingleton<IQueryBus, MediatorQueryBus>();
-
             container.RegisterSingleton<INotificationBus, InMemoryNotificationBus>();
 
-            //var registrator = new SimpleInjectorRegistratorAndActivator(container);
-            //registrator.ActivateAll();
+            services.AddSingleton<MvcQueryBus>();
+            services.AddSingleton<MvcCommandBus>();
+            //services.AddSingleton<MvcNotificationBus>();
 
-            services.AddSingleton(container.GetInstance<INotificationBus>());
-            services.AddSingleton(container.GetInstance<ICommandBus>());
-            services.AddSingleton(container.GetInstance<IQueryBus>());
+            services.AddDbContext<SilentRedWebCoreContext>(
+                options => options.UseSqlServer(Configuration.GetConnectionString("SilentRedWebCoreContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -16,11 +16,11 @@ namespace Studiekring.Business.Customers.Commands
             CancellationToken cancellationToken)
         {
             var customer = new Customer(Guid.NewGuid());
-            customer.Name=command.;
+            //customer.Name=command.;
 
             await _repository.Add(customer);
 
-            return CommandResult.Succeeded;
+            return new CommandSuccess();
         }
 
         public NewCustomerHandler(CustomerRepository repository)

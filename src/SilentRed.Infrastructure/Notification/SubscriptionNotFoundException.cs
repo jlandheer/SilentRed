@@ -1,6 +1,6 @@
 using System;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Notification
 {
     public class SubscriptionNotFoundException : Exception
     {

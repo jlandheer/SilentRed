@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.FluentValidation
 {

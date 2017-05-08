@@ -1,14 +1,18 @@
-﻿using SilentRed.Infrastructure.Command;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SilentRed.Infrastructure.Core
 {
     public class AuthorizationException : SilentRedException
     {
-        public CommandResult Result { get; set; }
-
-        public AuthorizationException(CommandResult result)
+        public AuthorizationException(Type objectType, IEnumerable<Error> errors)
         {
-            Result = result;
+            ObjectType = objectType;
+            Errors = errors;
         }
+
+        public Type ObjectType { get; }
+        public IEnumerable<Error> Errors { get; }
     }
 }
+

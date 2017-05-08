@@ -1,5 +1,5 @@
 ﻿namespace SilentRed.Infrastructure.Command
 {
-    public interface ICommandDecorator<TCommand> : ICommandHandler<TCommand>
+    public interface ICommandDecorator<in TCommand> : ICommandHandler<TCommand>
         where TCommand : ICommand { }
 }

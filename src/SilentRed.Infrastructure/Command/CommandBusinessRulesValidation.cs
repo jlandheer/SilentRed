@@ -21,7 +21,7 @@ namespace SilentRed.Infrastructure.Command
 
             if (results.Any())
             {
-                return CommandResult.Failed(nameof(CommandBusinessRulesValidation<TCommand>), results);
+                return new CommandBusinessRulesViolationResult(command, results);
             }
 
             return await _next.Handle(command, headers, cancellationToken);

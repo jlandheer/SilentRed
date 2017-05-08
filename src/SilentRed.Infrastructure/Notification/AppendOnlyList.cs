@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Notification
 {
     /// <summary>
     /// Threadsafe lijst om alleen aan toe te voegen.

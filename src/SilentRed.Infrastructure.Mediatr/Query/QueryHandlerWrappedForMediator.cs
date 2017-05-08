@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.Mediatr
 {

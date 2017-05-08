@@ -2,6 +2,8 @@
 using System.Reflection;
 using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Mediatr;
+using SilentRed.Infrastructure.Notification;
+using SilentRed.Infrastructure.Query;
 using SilentRed.Infrastructure.SimpleInjector;
 using SilentRed.SimpleInjector.Extensions.Mediatr;
 using SimpleInjector;
