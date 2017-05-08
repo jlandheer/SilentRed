@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SilentRed.Infrastructure;
-using SilentRed.WebCore.Customers;
+using SilentRed.Infrastructure.Command;
 
 namespace SilentRed.WebCore.Controllers
 {

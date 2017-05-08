@@ -1,4 +1,4 @@
-﻿namespace SilentRed.WebCore.Customers.Models
+﻿namespace Studiekring.Business.Customers.Models
 {
     public enum CustomerState
     {

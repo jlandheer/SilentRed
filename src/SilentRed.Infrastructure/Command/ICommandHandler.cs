@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure.Command;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Command
 {
     public interface ICommandHandler<in TCommand>
         where TCommand : ICommand

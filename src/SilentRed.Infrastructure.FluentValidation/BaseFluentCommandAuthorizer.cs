@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using FluentValidation;
+using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure.FluentValidation

@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Core;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Command
 {
     public class CommandBusinessRulesValidation<TCommand> : ICommandDecorator<TCommand>
         where TCommand : ICommand

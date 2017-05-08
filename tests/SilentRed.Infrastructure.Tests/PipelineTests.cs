@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Command;
 using Xunit;
 
 namespace SilentRed.Infrastructure.Tests

@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\src\SilentRed.Infrastructure.SimpleInjector\SilentRed.Infrastructure.SimpleInjector.csproj" />
     <ProjectReference Include="..\..\src\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\SilentRed.SimpleInjector.Extensions.Mediatr\SilentRed.SimpleInjector.Extensions.Mediatr.csproj" />
+    <ProjectReference Include="..\Studiekring.Business\Studiekring.Business.csproj" />
   </ItemGroup>
 
 </Project>

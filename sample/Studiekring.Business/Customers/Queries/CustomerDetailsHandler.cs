@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers
+namespace Studiekring.Business.Customers.Queries
 {
     public class CustomerDetailsHandler :
         IQueryHandler<GetCustomerDetails, GetCustomerDetails.Result>

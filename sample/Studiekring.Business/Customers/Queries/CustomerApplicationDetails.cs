@@ -1,7 +1,6 @@
 ﻿using System;
-using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers
+namespace Studiekring.Business.Customers.Queries
 {
     public class GetCustomerDetails : IQuery<GetCustomerDetails.Result>
     {

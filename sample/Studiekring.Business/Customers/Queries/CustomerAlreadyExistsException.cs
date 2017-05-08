@@ -1,6 +1,6 @@
 using System;
 
-namespace SilentRed.WebCore.Customers
+namespace Studiekring.Business.Customers.Queries
 {
     public class CustomerAlreadyExistsException : Exception
     {

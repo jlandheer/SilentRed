@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SilentRed.Infrastructure.Core;
 
-namespace SilentRed.Infrastructure
+namespace SilentRed.Infrastructure.Command
 {
     public interface ICommandBusinessRule<in TCommand>
         where TCommand : ICommand

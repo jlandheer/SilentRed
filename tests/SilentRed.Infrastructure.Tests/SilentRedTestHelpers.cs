@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Mediatr;
 using SilentRed.Infrastructure.SimpleInjector;
 using SilentRed.SimpleInjector.Extensions.Mediatr;

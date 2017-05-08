@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Runtime;
 using SimpleInjector;
 

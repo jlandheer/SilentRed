@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure;
 using SilentRed.Infrastructure.Command;
-using SilentRed.WebCore.Customers.Models;
+using Studiekring.Business.Customers.Models;
+using Studiekring.Business.Customers.Queries;
 
-namespace SilentRed.WebCore.Customers
+namespace Studiekring.Business.Customers.Commands
 {
     public class NewCustomerHandler : ICommandHandler<NewCustomerCommand>
     {
@@ -14,10 +15,10 @@ namespace SilentRed.WebCore.Customers
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
-            var application = new Customer();
-            application.NewCustomer(command);
+            var customer = new Customer(Guid.NewGuid());
+            customer.Name=command.;
 
-            await _repository.Add(application);
+            await _repository.Add(customer);
 
             return CommandResult.Succeeded;
         }

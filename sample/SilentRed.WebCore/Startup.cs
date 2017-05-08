@@ -6,11 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SilentRed.Infrastructure;
+using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Mediatr;
 using SilentRed.Infrastructure.Runtime;
 using SilentRed.Infrastructure.SimpleInjector;
 using SilentRed.SimpleInjector.Extensions.Mediatr;
-using SilentRed.WebCore.Customers;
 using SimpleInjector;
 
 namespace SilentRed.WebCore
@@ -38,7 +38,7 @@ namespace SilentRed.WebCore
 
             var container = new Container();
             var assemblies = AppDomain.GetAssemblies().ToList();
-            assemblies.Add(typeof(NewCustomerCommand).GetTypeInfo().Assembly);
+            //assemblies.Add(typeof(NewCustomerCommand).GetTypeInfo().Assembly);
 
             container.ConfigureSilentRedWithSimpleInjector(assemblies);
             container.ConfigureSilentRedWithMediator(assemblies);
@@ -48,9 +48,8 @@ namespace SilentRed.WebCore
 
             container.RegisterSingleton<INotificationBus, InMemoryNotificationBus>();
 
-            var registrator = new SimpleInjectorRegistratorAndActivator(container);
-
-            registrator.ActivateAll();
+            //var registrator = new SimpleInjectorRegistratorAndActivator(container);
+            //registrator.ActivateAll();
 
             services.AddSingleton(container.GetInstance<INotificationBus>());
             services.AddSingleton(container.GetInstance<ICommandBus>());

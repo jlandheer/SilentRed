@@ -2,9 +2,8 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers
+namespace Studiekring.Business.Customers.Queries
 {
     public class AllCustomersHandler :
         IQueryHandler<AllCustomers, AllCustomers.Result>

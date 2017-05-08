@@ -1,4 +1,4 @@
-﻿namespace SilentRed.Infrastructure
+﻿namespace SilentRed.Infrastructure.Command
 {
     public interface ICommand { }
 }

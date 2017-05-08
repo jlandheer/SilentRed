@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using SilentRed.Infrastructure;
 
-namespace SilentRed.WebCore.Customers
+namespace Studiekring.Business.Customers.Queries
 {
     public class AllCustomers : IQuery<AllCustomers.Result>
     {

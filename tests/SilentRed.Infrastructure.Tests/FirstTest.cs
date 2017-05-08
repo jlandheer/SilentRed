@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Core;
 using Xunit;
 

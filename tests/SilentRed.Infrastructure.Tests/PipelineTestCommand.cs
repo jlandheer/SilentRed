@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SilentRed.Infrastructure.Command;
 
 namespace SilentRed.Infrastructure.Tests
 {
