@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SilentRed.Infrastructure.Command;
 
-namespace SilentRed.Infrastructure.Mvc
+namespace SilentRed.Infrastructure.AspNet
 {
     public class MvcCommandBus
     {

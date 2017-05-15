@@ -3,7 +3,7 @@ using SilentRed.Infrastructure.Command;
 using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
-namespace SilentRed.Infrastructure.Mvc
+namespace SilentRed.Infrastructure.AspNet
 {
     public static class ResultExtensions
     {

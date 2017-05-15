@@ -15,7 +15,7 @@ namespace SilentRed.Infrastructure.Tests
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
-            return CommandResult.SucceededTask;
+            return CommandSuccess.NewTask();
         }
     }
 

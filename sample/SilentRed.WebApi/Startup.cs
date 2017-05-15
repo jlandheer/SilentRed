@@ -3,11 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using SilentRed.Infrastructure.AspNet;
-using SilentRed.WebCore.Models;
 
-namespace SilentRed.WebCore
+namespace SilentRed.WebApi
 {
     public class Startup
     {
@@ -18,7 +15,6 @@ namespace SilentRed.WebCore
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-
             Configuration = builder.Build();
         }
 
@@ -29,10 +25,6 @@ namespace SilentRed.WebCore
         {
             // Add framework services.
             services.AddMvc();
-            services.AddSilentRed();
-
-            services.AddDbContext<SilentRedWebCoreContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("SilentRedWebCoreContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,23 +33,7 @@ namespace SilentRed.WebCore
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-
-            app.UseStaticFiles();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
         }
     }
 }

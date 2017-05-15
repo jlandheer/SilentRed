@@ -7,7 +7,7 @@ namespace SilentRed.SimpleInjector.Extensions.Mediatr
 {
     public static class SimpleInjectorExtensions
     {
-        public static void RegisterMediator(this Container container, IList<Assembly> assemblies)
+        public static void RegisterMediator(this Container container, IEnumerable<Assembly> assemblies)
         {
             container.Register(typeof(IRequestHandler<,>), assemblies);
             container.Register(typeof(IAsyncRequestHandler<,>), assemblies);

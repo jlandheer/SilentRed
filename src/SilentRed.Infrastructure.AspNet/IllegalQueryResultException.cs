@@ -1,7 +1,7 @@
 ﻿using System;
 using SilentRed.Infrastructure.Core;
 
-namespace SilentRed.Infrastructure.Mvc
+namespace SilentRed.Infrastructure.AspNet
 {
     public class IllegalQueryResultException : SilentRedException
     {

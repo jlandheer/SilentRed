@@ -19,13 +19,13 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.1.0" />
-    <PackageReference Include="SimpleInjector" Version="4.0.3" />
+    <PackageReference Include="SimpleInjector" Version="4.0.6" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SilentRed.Infrastructure.Mvc\SilentRed.Infrastructure.Mvc.csproj" />
+    <ProjectReference Include="..\..\src\SilentRed.Infrastructure.AspNet\SilentRed.Infrastructure.AspNet.csproj" />
     <ProjectReference Include="..\..\src\SilentRed.Infrastructure.SimpleInjector\SilentRed.Infrastructure.SimpleInjector.csproj" />
     <ProjectReference Include="..\..\src\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj" />
     <ProjectReference Include="..\..\src\SilentRed.SimpleInjector.Extensions.Mediatr\SilentRed.SimpleInjector.Extensions.Mediatr.csproj" />

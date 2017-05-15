@@ -16,8 +16,7 @@ namespace Studiekring.Business.Customers.Queries
         {
             var current = await _repository.Get(query.CustomerId);
 
-            return
-                QueryResult.Succeeded(
+            return QuerySuccess.New(
                     new GetCustomerDetails.Result
                     {
                         Id = current.Id,

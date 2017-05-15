@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <Import Project="..\SilentRed.packaging.props" Condition="Exists('..\SilentRed.packaging.props')" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SilentRed.Infrastructure.Mediatr\SilentRed.Infrastructure.Mediatr.csproj" />
+    <ProjectReference Include="..\SilentRed.Infrastructure.SimpleInjector\SilentRed.Infrastructure.SimpleInjector.csproj" />
+    <ProjectReference Include="..\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj" />
+    <ProjectReference Include="..\SilentRed.SimpleInjector.Extensions.Mediatr\SilentRed.SimpleInjector.Extensions.Mediatr.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

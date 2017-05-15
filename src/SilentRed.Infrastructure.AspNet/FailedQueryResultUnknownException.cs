@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using SilentRed.Infrastructure.Core;
 
-namespace SilentRed.Infrastructure.Mvc
+namespace SilentRed.Infrastructure.AspNet
 {
     public class FailedQueryResultUnknownException : SilentRedException
     {

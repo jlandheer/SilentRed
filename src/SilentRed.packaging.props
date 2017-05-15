@@ -1,0 +1,21 @@
+﻿<Project>
+    <PropertyGroup>
+        <PackageVersion>1.0.4</PackageVersion>
+    </PropertyGroup>
+    
+    
+    
+    <PropertyGroup>
+        <Authors>Roaring Blue</Authors>
+        <Copyright>Copyright 2017 (c) Roaring Blue. All rights reserved.</Copyright>
+        <IncludeSymbols>True</IncludeSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <Target Name="CopyPackage" AfterTargets="Pack" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <Copy SourceFiles="$(OutputPath)\..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="C:\Development\LocalPackages\" />
+    </Target>
+</Project>

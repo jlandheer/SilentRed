@@ -2,8 +2,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure;
-using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
 namespace Studiekring.Business.Customers.Queries
@@ -21,14 +19,14 @@ namespace Studiekring.Business.Customers.Queries
                 .Result
                 .Select(
                     i => new AllCustomers.Result.Customer
-                         {
-                             Id = i.Id,
-                             Email = i.Email,
-                             Status = i.State.ToString()
-                         })
+                    {
+                        Id = i.Id,
+                        Email = i.Email,
+                        Status = i.State.ToString()
+                    })
                 .ToList();
 
-            return new QuerySuccess<AllCustomers.Result>(new AllCustomers.Result { Customers = customers }).AsTask<QueryResult<AllCustomers.Result>>();
+            return QuerySuccess.NewTask(new AllCustomers.Result { Customers = customers });
         }
 
         public AllCustomersHandler(CustomerRepository customerRepository)

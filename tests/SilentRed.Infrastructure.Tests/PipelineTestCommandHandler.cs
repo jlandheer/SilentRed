@@ -14,7 +14,7 @@ namespace SilentRed.Infrastructure.Tests
         {
             command.Add(typeof(PipelineTestCommandHandler));
 
-            return CommandResult.SucceededTask;
+            return CommandSuccess.NewTask();
         }
     }
 }

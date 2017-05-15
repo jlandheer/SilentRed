@@ -1,18 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>netstandard1.6</TargetFramework>
-        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="MediatR" Version="3.0.1" />
-      <PackageReference Include="SimpleInjector" Version="4.0.3" />
-    </ItemGroup>
+  <Import Project="..\SilentRed.packaging.props" Condition="Exists('..\SilentRed.packaging.props')" />
 
-    <ItemGroup>
-      <ProjectReference Include="..\SilentRed.Infrastructure.Mediatr\SilentRed.Infrastructure.Mediatr.csproj" />
-      <ProjectReference Include="..\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj" />
-    </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin/Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="3.0.1" />
+    <PackageReference Include="SimpleInjector" Version="4.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SilentRed.Infrastructure.Mediatr\SilentRed.Infrastructure.Mediatr.csproj" />
+    <ProjectReference Include="..\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>

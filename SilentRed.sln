@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		build.cake = build.cake
+		src\SilentRed.packaging.props = src\SilentRed.packaging.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DA318ECC-C864-472D-8EC2-14AA4D43FEDA}"
@@ -31,7 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentRed.Infrastructure.Fl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Studiekring.Business", "sample\Studiekring.Business\Studiekring.Business.csproj", "{97B7E848-6DF8-4C5D-BC67-A5DC5F9E1C23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentRed.Infrastructure.Mvc", "src\SilentRed.Infrastructure.Mvc\SilentRed.Infrastructure.Mvc.csproj", "{1CDDEA69-4877-4B47-9966-4905E935FA9F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentRed.Infrastructure.AspNet", "src\SilentRed.Infrastructure.AspNet\SilentRed.Infrastructure.AspNet.csproj", "{1CDDEA69-4877-4B47-9966-4905E935FA9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,12 @@
-﻿namespace SilentRed.Infrastructure.Command
+﻿using System.Threading.Tasks;
+
+namespace SilentRed.Infrastructure.Command
 {
     public class CommandSuccess : CommandResult
     {
-        public CommandSuccess() : base(true) { }
+        public static CommandResult New() => new CommandSuccess();
+        public static Task<CommandResult> NewTask() => Task.FromResult(New());
+
+        protected CommandSuccess() : base(true) { }
     }
 }

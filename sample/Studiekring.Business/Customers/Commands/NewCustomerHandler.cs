@@ -20,7 +20,7 @@ namespace Studiekring.Business.Customers.Commands
 
             await _repository.Add(customer);
 
-            return new CommandSuccess();
+            return CommandSuccess.New();
         }
 
         public NewCustomerHandler(CustomerRepository repository)
