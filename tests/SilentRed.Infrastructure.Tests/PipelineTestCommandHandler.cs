@@ -7,14 +7,14 @@ namespace SilentRed.Infrastructure.Tests
 {
     public class PipelineTestCommandHandler : ICommandHandler<PipelineTestCommand>
     {
-        public Task<CommandResult> Handle(
+        public Task Handle(
             PipelineTestCommand command,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
             command.Add(typeof(PipelineTestCommandHandler));
 
-            return CommandSuccess.NewTask();
+            return Task.CompletedTask;
         }
     }
 }

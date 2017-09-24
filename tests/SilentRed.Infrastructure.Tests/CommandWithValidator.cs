@@ -10,12 +10,12 @@ namespace SilentRed.Infrastructure.Tests
 
     public class CommandWithValidatorHandler : ICommandHandler<CommandWithValidator>
     {
-        public Task<CommandResult> Handle(
+        public Task Handle(
             CommandWithValidator command,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
-            return CommandSuccess.NewTask();
+            return Task.CompletedTask;
         }
     }
 

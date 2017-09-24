@@ -6,7 +6,7 @@ namespace SilentRed.Infrastructure.Query
 {
     public interface IQueryBus
     {
-        Task<QueryResult<TResult>> Get<TResult>(
+        Task<TResult> Get<TResult>(
             IQuery<TResult> query,
             IDictionary<string, object> headers = null,
             CancellationToken cancellationToken = default(CancellationToken));

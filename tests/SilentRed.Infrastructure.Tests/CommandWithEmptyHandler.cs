@@ -10,12 +10,12 @@ namespace SilentRed.Infrastructure.Tests
 
     public class CommandWithEmptyHandlerHandler : ICommandHandler<CommandWithEmptyHandler>
     {
-        public Task<CommandResult> Handle(
+        public Task Handle(
             CommandWithEmptyHandler command,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
-            return CommandSuccess.NewTask();
+            return Task.CompletedTask;
         }
     }
 }

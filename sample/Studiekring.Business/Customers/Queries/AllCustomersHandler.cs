@@ -6,10 +6,9 @@ using SilentRed.Infrastructure.Query;
 
 namespace Studiekring.Business.Customers.Queries
 {
-    public class AllCustomersHandler :
-        IQueryHandler<AllCustomers, AllCustomers.Result>
+    public class AllCustomersHandler : IQueryHandler<AllCustomers, AllCustomers.Result>
     {
-        public Task<QueryResult<AllCustomers.Result>> Handle(
+        public Task<AllCustomers.Result> Handle(
             AllCustomers query,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
@@ -26,7 +25,7 @@ namespace Studiekring.Business.Customers.Queries
                     })
                 .ToList();
 
-            return QuerySuccess.NewTask(new AllCustomers.Result { Customers = customers });
+            return new AllCustomers.Result { Customers = customers }.AsTask();
         }
 
         public AllCustomersHandler(CustomerRepository customerRepository)

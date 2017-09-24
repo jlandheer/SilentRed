@@ -53,7 +53,7 @@ namespace SilentRed.Infrastructure.Mediatr
         private static readonly ConcurrentDictionary<Type, Type> WrapperCache = new ConcurrentDictionary<Type, Type>();
     }
 
-    public abstract class QueryWrappedForMediator<TQueryResult> : IRequest<QueryResult<TQueryResult>>
+    public abstract class QueryWrappedForMediator<TQueryResult> : IRequest<TQueryResult>
     {
         public IDictionary<string, object> Headers { get; }
 

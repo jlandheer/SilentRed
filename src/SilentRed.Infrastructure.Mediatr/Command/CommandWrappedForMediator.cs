@@ -18,9 +18,8 @@ namespace SilentRed.Infrastructure.Mediatr
                 return false;
 
             var wrappedType =
-                typeof(CommandWrappedForMediator<,>).MakeGenericType(
-                    firstArgumentType.GenericTypeArguments[0],
-                    typeof(CommandResult));
+                typeof(CommandWrappedForMediator<>).MakeGenericType(
+                    firstArgumentType.GenericTypeArguments[0]);
             if (firstArgumentType != wrappedType)
                 return false;
 
@@ -28,9 +27,8 @@ namespace SilentRed.Infrastructure.Mediatr
         }
     }
 
-    public class CommandWrappedForMediator<TCommand, TResult> : IRequest<TResult>
+    public class CommandWrappedForMediator<TCommand> : IRequest<Unit>
         where TCommand : ICommand
-        where TResult : CommandResult
     {
         public TCommand Command { get; }
         public IDictionary<string, object> Headers { get; }

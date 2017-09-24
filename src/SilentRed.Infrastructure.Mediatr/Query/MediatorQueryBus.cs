@@ -8,7 +8,7 @@ namespace SilentRed.Infrastructure.Mediatr
 {
     public class MediatorQueryBus : IQueryBus
     {
-        public Task<QueryResult<TResult>> Get<TResult>(
+        public Task<TResult> Get<TResult>(
             IQuery<TResult> query,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken = new CancellationToken())

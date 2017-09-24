@@ -9,15 +9,14 @@ namespace Studiekring.Business.Customers.Queries
     public class CustomerDetailsHandler :
         IQueryHandler<GetCustomerDetails, GetCustomerDetails.Result>
     {
-        public async Task<QueryResult<GetCustomerDetails.Result>> Handle(
+        public async Task<GetCustomerDetails.Result> Handle(
             GetCustomerDetails query,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
             var current = await _repository.Get(query.CustomerId);
 
-            return QuerySuccess.New(
-                    new GetCustomerDetails.Result
+            return  new GetCustomerDetails.Result
                     {
                         Id = current.Id,
                         Email = current.Email,
@@ -25,7 +24,7 @@ namespace Studiekring.Business.Customers.Queries
                         Name = current.Name,
                         Gender = current.Gender,
                         Phone = current.Phone
-                    });
+                    };
         }
 
         public CustomerDetailsHandler(CustomerRepository repository)

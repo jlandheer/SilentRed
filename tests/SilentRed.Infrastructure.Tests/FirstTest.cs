@@ -17,9 +17,8 @@ namespace SilentRed.Infrastructure.Tests
 
             var commandBus = container.GetInstance<ICommandBus>();
 
-            var res = await commandBus.Send(new CommandWithValidator());
-
-            Assert.False(res.Success);
+            var ex = await Act.TryAsync(() => commandBus.Send(new CommandWithValidator()));
+            Assert.NotNull(ex);
         }
 
         [Fact]
@@ -30,9 +29,8 @@ namespace SilentRed.Infrastructure.Tests
 
             var commandBus = container.GetInstance<ICommandBus>();
 
-            var res = await commandBus.Send(new CommandWithEmptyHandler());
-
-            Assert.True(res.Success);
+            var ex = await Act.TryAsync(() => commandBus.Send(new CommandWithEmptyHandler()));
+            Assert.NotNull(ex);
         }
 
         [Fact]
@@ -56,7 +54,7 @@ namespace SilentRed.Infrastructure.Tests
 
             var commandBus = container.GetInstance<ICommandBus>();
 
-            var ex = await Act.TryAsync(() => commandBus.Send((CommandWithValidator) null));
+            var ex = await Act.TryAsync(() => commandBus.Send((CommandWithValidator)null));
 
             Assert.IsType<ArgumentNullException>(ex);
         }

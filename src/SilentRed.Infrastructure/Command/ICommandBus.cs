@@ -6,7 +6,7 @@ namespace SilentRed.Infrastructure.Command
 {
     public interface ICommandBus
     {
-        Task<CommandResult> Send<TCommand>(
+        Task Send<TCommand>(
             TCommand command,
             IDictionary<string, object> headers = null,
             CancellationToken cancellationToken = default(CancellationToken)

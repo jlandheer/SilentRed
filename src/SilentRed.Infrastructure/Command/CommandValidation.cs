@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.Command
     public class CommandValidation<TCommand> : ICommandDecorator<TCommand>
         where TCommand : ICommand
     {
-        public async Task<CommandResult> Handle(
+        public async Task Handle(
             TCommand command,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
@@ -21,10 +21,10 @@ namespace SilentRed.Infrastructure.Command
 
             if (results.Any())
             {
-                return new CommandValidationFailed(command, results);
+                throw new ValidationException(typeof(TCommand), results);
             }
 
-            return await _next.Handle(command, headers, cancellationToken);
+            await _next.Handle(command, headers, cancellationToken);
         }
 
         public CommandValidation(

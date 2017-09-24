@@ -7,7 +7,7 @@ namespace SilentRed.Infrastructure.Query
     public interface IQueryHandler<in TQuery, TResult>
         where TQuery : IQuery<TResult>
     {
-        Task<QueryResult<TResult>> Handle(
+        Task<TResult> Handle(
             TQuery query,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken);
