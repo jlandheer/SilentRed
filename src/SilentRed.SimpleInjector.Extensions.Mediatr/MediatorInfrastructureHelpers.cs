@@ -33,19 +33,16 @@ namespace SilentRed.SimpleInjector.Extensions.Mediatr
         {
             var allAssemblies = (assemblies ?? AppDomain.GetAssemblies()).ToList();
 
-            container.RegisterSingleton<IMediator>(
-                () => new Mediator(container.GetInstance, container.GetAllInstances));
+            container.RegisterSingleton<IMediator>(() => new Mediator(container.GetInstance, container.GetAllInstances));
 
             container.RegisterMediator(allAssemblies);
-            container.RegisterConditional(
-                typeof(ICancellableAsyncRequestHandler<,>),
-                typeof(CommandHandlerWrappedForMediator<,>),
-                context => context.ServiceType.IsWrappedMediatorCommandHandler());
+            container.Register(
+                typeof(ICancellableAsyncRequestHandler<>),
+                typeof(CommandHandlerWrappedForMediator<>));
 
-            container.RegisterConditional(
+            container.Register(
                 typeof(ICancellableAsyncRequestHandler<,>),
-                typeof(QueryHandlerWrappedForMediator<,>),
-                context => context.ServiceType.IsWrappedMediatorQueryHandler());
+                typeof(QueryHandlerWrappedForMediator<,>));
 
             return container;
         }

@@ -33,7 +33,9 @@ namespace SilentRed.Infrastructure.Core
                 .ToList();
 
             if (!messages.Any())
+            {
                 throw new InvalidOperationException("Need at least one errormessage");
+            }
 
             _messages = messages;
             PropertyName = propertyName ?? "";

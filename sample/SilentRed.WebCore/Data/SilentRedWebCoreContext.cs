@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Studiekring.Business.Customers.Commands;
 
-namespace SilentRed.WebCore.Models
+namespace SilentRed.WebCore.Data
 {
     public class SilentRedWebCoreContext : DbContext
     {
@@ -14,6 +10,6 @@ namespace SilentRed.WebCore.Models
         {
         }
 
-        public DbSet<Studiekring.Business.Customers.Commands.NewCustomerCommand> NewCustomerCommand { get; set; }
+        public DbSet<NewCustomerCommand> NewCustomerCommand { get; set; }
     }
 }

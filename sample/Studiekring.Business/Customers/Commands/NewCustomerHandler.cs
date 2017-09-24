@@ -10,17 +10,14 @@ namespace Studiekring.Business.Customers.Commands
 {
     public class NewCustomerHandler : ICommandHandler<NewCustomerCommand>
     {
-        public async Task<CommandResult> Handle(
+        public async Task Handle(
             NewCustomerCommand command,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
         {
             var customer = new Customer(Guid.NewGuid());
-            //customer.Name=command.;
 
             await _repository.Add(customer);
-
-            return CommandSuccess.New();
         }
 
         public NewCustomerHandler(CustomerRepository repository)

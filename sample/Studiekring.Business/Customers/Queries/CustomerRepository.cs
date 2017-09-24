@@ -11,7 +11,9 @@ namespace Studiekring.Business.Customers.Queries
         public Task Add(Customer customer)
         {
             if (ExistsInternal(customer.Id))
+            {
                 throw new CustomerAlreadyExistsException(customer.Id);
+            }
 
             _customers.Add(customer);
 
@@ -32,7 +34,9 @@ namespace Studiekring.Business.Customers.Queries
         {
             var customer = _customers.SingleOrDefault(i => i.Id == customerId);
             if (customer == null)
+            {
                 throw new CustomerDoesNotExistException(customerId);
+            }
 
             return Task.FromResult(customer);
         }
@@ -78,7 +82,7 @@ namespace Studiekring.Business.Customers.Queries
                                                              Gender = "V",
                                                              Phone = "+328919233332",
                                                              State =CustomerState.New
-                                                         },
+                                                         }
                                                      };
 
         private bool ExistsInternal(Guid customerId)

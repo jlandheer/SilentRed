@@ -9,7 +9,9 @@ namespace SilentRed.Infrastructure.SimpleInjector
         public void ActivateAll()
         {
             if (_locked)
+            {
                 throw new InvalidOperationException("Cannot activate more than one time.");
+            }
 
             _locked = true;
             foreach (var type in _types)
@@ -22,7 +24,9 @@ namespace SilentRed.Infrastructure.SimpleInjector
             where T : class
         {
             if (_locked)
+            {
                 throw new InvalidOperationException("Cannot Register types after activation.");
+            }
 
             _container.RegisterSingleton<T>();
             _types.Add(typeof(T));

@@ -16,11 +16,10 @@ namespace SilentRed.Infrastructure.Tests
             var commandBus = container.GetInstance<ICommandBus>();
 
             var command = new PipelineTestCommand();
-            var res = await commandBus.Send(command);
+            await commandBus.Send(command);
 
             var pipeline = command.TypesVisited();
 
-            Assert.True(res.Success);
             Assert.Equal(typeof(PipelineTestCommandValidator), pipeline[0]);
             Assert.Equal(typeof(PipelineTestCommandAuthorizer), pipeline[1]);
             Assert.Equal(typeof(PipelineTestCommandBusinessRulesValidator), pipeline[2]);

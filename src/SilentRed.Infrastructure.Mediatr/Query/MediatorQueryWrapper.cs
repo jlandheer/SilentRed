@@ -16,18 +16,20 @@ namespace SilentRed.Infrastructure.Mediatr
                 type =>
                 {
                     if (!type.GetTypeInfo().IsGenericType)
+                    {
                         return false;
+                    }
 
                     var firstArgumentType = type.GenericTypeArguments[0];
                     if (!firstArgumentType.GetTypeInfo().IsGenericType)
+                    {
                         return false;
+                    }
 
                     var genericTypeArguments = firstArgumentType.GenericTypeArguments;
                     var wrappedType = typeof(QueryWrappedForMediator<,>).MakeGenericType(genericTypeArguments);
-                    if (firstArgumentType != wrappedType)
-                        return false;
 
-                    return true;
+                    return firstArgumentType == wrappedType;
                 });
         }
 

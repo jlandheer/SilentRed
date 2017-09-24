@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.Command
         Task Send<TCommand>(
             TCommand command,
             IDictionary<string, object> headers = null,
-            CancellationToken cancellationToken = default(CancellationToken)
+            CancellationToken cancellationToken = default
         )
             where TCommand : ICommand;
     }

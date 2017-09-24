@@ -6,10 +6,10 @@ using SilentRed.Infrastructure.Query;
 namespace SilentRed.Infrastructure.Mediatr
 {
     public class QueryHandlerWrappedForMediator<TQuery, TQueryResult>
-        : ICancellableAsyncRequestHandler<QueryWrappedForMediator<TQuery, TQueryResult>, QueryResult<TQueryResult>>
+        : ICancellableAsyncRequestHandler<QueryWrappedForMediator<TQuery, TQueryResult>, TQueryResult>
         where TQuery : IQuery<TQueryResult>
     {
-        public Task<QueryResult<TQueryResult>> Handle(
+        public Task<TQueryResult> Handle(
             QueryWrappedForMediator<TQuery, TQueryResult> wrappedQuery,
             CancellationToken cancellationToken)
         {

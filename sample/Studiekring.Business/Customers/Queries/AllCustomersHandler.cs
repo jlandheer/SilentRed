@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
 namespace Studiekring.Business.Customers.Queries
@@ -30,7 +32,7 @@ namespace Studiekring.Business.Customers.Queries
 
         public AllCustomersHandler(CustomerRepository customerRepository)
         {
-            _customerRepository = customerRepository;
+            _customerRepository = customerRepository ?? throw new ArgumentNullException(nameof(customerRepository));
         }
 
         private readonly CustomerRepository _customerRepository;

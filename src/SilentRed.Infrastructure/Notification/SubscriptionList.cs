@@ -15,9 +15,9 @@ namespace SilentRed.Infrastructure.Notification
             return id;
         }
 
-        public IEnumerable<Action> GetHandlersFor(TNotification @notification)
+        public IEnumerable<Action> GetHandlersFor(TNotification notification)
         {
-            return _subscriptions.Values.Select(action => (Action) (() => action(@notification)));
+            return _subscriptions.Values.Select(action => (Action) (() => action(notification)));
         }
 
         public override bool UnSubscribe(Guid id)

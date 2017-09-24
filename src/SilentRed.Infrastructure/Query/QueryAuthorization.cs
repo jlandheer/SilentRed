@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.Query
     public class QueryAuthorization<TQuery, TResult> : IQueryDecorator<TQuery, TResult>
         where TQuery : IQuery<TResult>
     {
-        public async Task<QueryResult<TResult>> Handle(
+        public async Task<TResult> Handle(
             TQuery query,
             IDictionary<string, object> headers,
             CancellationToken cancellationToken)
@@ -21,7 +21,7 @@ namespace SilentRed.Infrastructure.Query
 
             if (results.Any())
             {
-                return new QueryAuthorizationFailed<TResult>(query.GetType(), results);
+                throw new AuthorizationException(query.GetType(), results);
             }
 
             return await _next.Handle(query, headers, cancellationToken);

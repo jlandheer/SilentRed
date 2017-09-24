@@ -5,13 +5,12 @@ using SilentRed.Infrastructure.Command;
 
 namespace SilentRed.Infrastructure.Mediatr
 {
-    public class CommandHandlerWrappedForMediator<TCommand, TResult> :
-        ICancellableAsyncRequestHandler<CommandWrappedForMediator<TCommand, TResult>, CommandResult>
+    public class CommandHandlerWrappedForMediator<TCommand> :
+        ICancellableAsyncRequestHandler<CommandWrappedForMediator<TCommand>>
         where TCommand : ICommand
-        where TResult : CommandResult
     {
-        public Task<CommandResult> Handle(
-            CommandWrappedForMediator<TCommand, TResult> message,
+        public Task Handle(
+            CommandWrappedForMediator<TCommand> message,
             CancellationToken cancellationToken)
         {
             return _commandHandler.Handle(message.Command, message.Headers, cancellationToken);

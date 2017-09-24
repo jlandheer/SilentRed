@@ -1,3 +1,4 @@
+// ReSharper disable UnusedParameter.Global
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,16 +9,16 @@ namespace SilentRed.Infrastructure.Notification
     {
         Task Publish<TNotification>(
             TNotification notification,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
             where TNotification : INotification;
 
         Task<Subscription> Subscribe<TNotification>(
             Action<TNotification> action,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
             where TNotification : INotification;
 
         Task UnSubscribe(
             Subscription subscription,
-            CancellationToken cancellationToken = default(CancellationToken));
+            CancellationToken cancellationToken = default);
     }
 }

@@ -10,7 +10,9 @@ namespace SilentRed.Infrastructure.Notification
         public void Cancel()
         {
             if (_started)
+            {
                 _tokenSource.Cancel();
+            }
         }
 
         public void Dispatch(Action action)
@@ -30,13 +32,17 @@ namespace SilentRed.Infrastructure.Notification
         public void Dispose()
         {
             if (_started)
+            {
                 _tokenSource.Cancel();
+            }
         }
 
         public void Start()
         {
             if (_started)
+            {
                 return;
+            }
 
             _started = true;
             _tokenSource = new CancellationTokenSource();
@@ -83,9 +89,7 @@ namespace SilentRed.Infrastructure.Notification
             {
                 try
                 {
-                    Action action;
-
-                    var haveOne = _dispatchQueue.TryTake(out action, 100, token);
+                    var haveOne = _dispatchQueue.TryTake(out var action, 100, token);
                     if (haveOne)
                     {
                         action();
@@ -98,7 +102,9 @@ namespace SilentRed.Infrastructure.Notification
                 }
 #if DEBUG
                 if (_delay > 0)
+                {
                     Thread.Sleep(_delay);
+                }
 #endif
             }
         }

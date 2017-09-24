@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using SilentRed.Infrastructure.Command;
-using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure.Tests
 {

@@ -10,19 +10,21 @@ namespace SilentRed.Infrastructure.Mediatr
 {
     public class MediatorCommandBus : ICommandBus
     {
-        public Task<CommandResult> Send<TCommand>(
+        public Task Send<TCommand>(
             TCommand command,
             IDictionary<string, object> headers = null,
             CancellationToken cancellationToken = new CancellationToken())
             where TCommand : ICommand
         {
-            if (command == null)
+            if(command==null)
+            {
                 throw new ArgumentNullException(nameof(command));
+            }
 
             try
             {
                 return _mediator.Send(
-                    new CommandWrappedForMediator<TCommand, CommandResult>(command, headers),
+                    new CommandWrappedForMediator<TCommand>(command, headers),
                     cancellationToken);
             }
             catch (InvalidOperationException ex)

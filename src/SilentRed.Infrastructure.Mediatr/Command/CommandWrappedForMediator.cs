@@ -11,23 +11,25 @@ namespace SilentRed.Infrastructure.Mediatr
         public static bool IsWrappedMediatorCommandHandler(this Type serviceType)
         {
             if (!serviceType.GetTypeInfo().IsGenericType)
+            {
                 return false;
+            }
 
             var firstArgumentType = serviceType.GenericTypeArguments[0];
             if (!firstArgumentType.GetTypeInfo().IsGenericType)
+            {
                 return false;
+            }
 
             var wrappedType =
                 typeof(CommandWrappedForMediator<>).MakeGenericType(
                     firstArgumentType.GenericTypeArguments[0]);
-            if (firstArgumentType != wrappedType)
-                return false;
 
-            return true;
+            return firstArgumentType == wrappedType;
         }
     }
 
-    public class CommandWrappedForMediator<TCommand> : IRequest<Unit>
+    public class CommandWrappedForMediator<TCommand> : IRequest
         where TCommand : ICommand
     {
         public TCommand Command { get; }

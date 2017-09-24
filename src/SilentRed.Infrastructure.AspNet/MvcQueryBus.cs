@@ -14,12 +14,12 @@ namespace SilentRed.Infrastructure.AspNet
             _queryBus = queryBus;
         }
 
-        public async Task<TResult> Get<TResult>(
+        public Task<TResult> Get<TResult>(
             IQuery<TResult> query,
             IDictionary<string, object> headers = null,
-            CancellationToken cancellationToken = default(CancellationToken))
+            CancellationToken cancellationToken = default)
         {
-            return (await _queryBus.Get(query, headers, cancellationToken)).ValueOrThrow();
+            return _queryBus.Get(query, headers, cancellationToken);
         }
     }
 }

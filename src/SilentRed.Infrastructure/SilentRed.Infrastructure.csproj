@@ -11,6 +11,10 @@
     <OutputPath>bin\Release</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="SilentRed.Infrastructure.csproj.DotSettings" />
   </ItemGroup>

@@ -11,6 +11,6 @@ namespace SilentRed.Infrastructure.Query
         Task<IEnumerable<Error>> AuthorizeAsync(
             TQuery query,
             IDictionary<string, object> headers,
-            CancellationToken cancellation = default(CancellationToken));
+            CancellationToken cancellation = default);
     }
 }

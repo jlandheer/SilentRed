@@ -21,10 +21,10 @@ namespace SilentRed.Infrastructure.Notification
             _registrations.Clear();
         }
 
-        public IEnumerable<Action> GetHandlersFor<TNotification>(TNotification @notification)
+        public IEnumerable<Action> GetHandlersFor<TNotification>(TNotification notification)
             where TNotification : INotification
         {
-            return GetSubscriptionsFor<TNotification>()?.GetHandlersFor(@notification);
+            return GetSubscriptionsFor<TNotification>()?.GetHandlersFor(notification);
         }
 
         public void UnSubscribe(Guid subscriptionId)
@@ -36,7 +36,9 @@ namespace SilentRed.Infrastructure.Notification
             }
 
             if (!success)
+            {
                 throw new SubscriptionNotFoundException(subscriptionId);
+            }
         }
 
         private SubscriptionList<TNotification> GetSubscriptionsFor<TNotification>()

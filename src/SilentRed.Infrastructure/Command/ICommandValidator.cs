@@ -11,6 +11,6 @@ namespace SilentRed.Infrastructure.Command
         Task<IEnumerable<Error>> ValidateAsync(
             TCommand command,
             IDictionary<string, object> headers,
-            CancellationToken cancellation = default(CancellationToken));
+            CancellationToken cancellation = default);
     }
 }
