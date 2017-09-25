@@ -20,20 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="6.4.1" />
-    <PackageReference Include="SimpleInjector" Version="4.0.6" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyModel">
-      <HintPath>$(HOMEPATH)\.nuget\packages\microsoft.extensions.dependencymodel\1.1.1\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Thread">
-      <HintPath>$(HOMEPATH)\.nuget\packages\system.threading.thread\4.3.0\ref\netstandard1.3\System.Threading.Thread.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.ThreadPool">
-      <HintPath>$(HOMEPATH)\.nuget\packages\system.threading.threadpool\4.3.0\ref\netstandard1.3\System.Threading.ThreadPool.dll</HintPath>
-    </Reference>
+    <PackageReference Include="FluentValidation" Version="7.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="1.1.2" />
+    <PackageReference Include="SimpleInjector" Version="4.0.11" />
+    <PackageReference Include="System.Threading" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+    <PackageReference Include="System.Threading.ThreadPool" Version="4.3.0" />
   </ItemGroup>
 
 </Project>

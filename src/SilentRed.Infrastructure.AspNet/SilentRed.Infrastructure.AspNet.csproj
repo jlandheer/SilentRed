@@ -26,10 +26,4 @@
     <ProjectReference Include="..\SilentRed.SimpleInjector.Extensions.Mediatr\SilentRed.SimpleInjector.Extensions.Mediatr.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\1.1.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

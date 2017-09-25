@@ -16,17 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimpleInjector" Version="4.0.6" />
+    <PackageReference Include="SimpleInjector" Version="4.0.11" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SilentRed.Infrastructure\SilentRed.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.DependencyModel">
-      <HintPath>$(HOMEPATH)\.nuget\packages\microsoft.extensions.dependencymodel\1.1.1\lib\netstandard1.6\Microsoft.Extensions.DependencyModel.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

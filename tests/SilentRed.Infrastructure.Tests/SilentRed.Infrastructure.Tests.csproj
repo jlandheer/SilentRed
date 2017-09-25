@@ -13,13 +13,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="6.4.1" />
-        <PackageReference Include="SimpleInjector" Version="4.0.6" />
+        <PackageReference Include="FluentValidation" Version="7.1.1" />
+        <PackageReference Include="SimpleInjector" Version="4.0.11" />
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="xunit" Version="2.3.0-beta1-build3642" />
-        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.0-beta1-build3642" />
+        <PackageReference Include="xunit.runner.utility" Version="2.2.0" />
     </ItemGroup>
 
     <ItemGroup>
