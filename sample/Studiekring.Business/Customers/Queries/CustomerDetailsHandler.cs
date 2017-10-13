@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using SilentRed.Infrastructure;
 using SilentRed.Infrastructure.Query;
 
 namespace Studiekring.Business.Customers.Queries

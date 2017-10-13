@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SilentRed.Infrastructure;
 using SilentRed.Infrastructure.Query;
 
 namespace Studiekring.Business.Customers.Queries

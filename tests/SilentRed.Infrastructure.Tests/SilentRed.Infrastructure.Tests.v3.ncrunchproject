@@ -1,5 +1,7 @@
 ﻿<ProjectConfiguration>
   <Settings>
+    <FrameworkUtilisationTypeForNUnit2>Disabled</FrameworkUtilisationTypeForNUnit2>
+    <NUnit3Enabled>False</NUnit3Enabled>
     <PreviouslyBuiltSuccessfully>True</PreviouslyBuiltSuccessfully>
   </Settings>
 </ProjectConfiguration>
