@@ -12,7 +12,7 @@ namespace SilentRed.Infrastructure.Tests
     {
         public Task Handle(
             CommandWithValidator command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             return Task.CompletedTask;
@@ -23,7 +23,7 @@ namespace SilentRed.Infrastructure.Tests
     {
         public Task<IEnumerable<Error>> ValidateAsync(
             CommandWithValidator command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellation = new CancellationToken())
         {
             return new Error("Foutje, bedankt.").AsEnumerable().AsTask();

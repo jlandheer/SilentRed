@@ -12,7 +12,7 @@ namespace SilentRed.Infrastructure.Mediatr
     {
         public Task Send<TCommand>(
             TCommand command,
-            IDictionary<string, object> headers = null,
+            Headers headers = null,
             CancellationToken cancellationToken = new CancellationToken())
             where TCommand : ICommand
         {

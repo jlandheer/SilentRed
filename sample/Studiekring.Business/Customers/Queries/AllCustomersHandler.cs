@@ -12,7 +12,7 @@ namespace Studiekring.Business.Customers.Queries
     {
         public Task<AllCustomers.Result> Handle(
             AllCustomers query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             var customers = _customerRepository

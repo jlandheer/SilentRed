@@ -10,7 +10,7 @@ namespace Studiekring.Business.Customers.Queries
     {
         public async Task<GetCustomerDetails.Result> Handle(
             GetCustomerDetails query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             var current = await _repository.Get(query.CustomerId);

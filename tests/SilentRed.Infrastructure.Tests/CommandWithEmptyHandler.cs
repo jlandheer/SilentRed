@@ -11,7 +11,7 @@ namespace SilentRed.Infrastructure.Tests
     {
         public Task Handle(
             CommandWithEmptyHandler command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             return Task.CompletedTask;

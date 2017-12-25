@@ -35,7 +35,7 @@ namespace SilentRed.Infrastructure.Mediatr
         public TCommand Command { get; }
         public IDictionary<string, object> Headers { get; }
 
-        internal CommandWrappedForMediator(TCommand command, IDictionary<string, object> headers)
+        internal CommandWrappedForMediator(TCommand command, Headers headers)
         {
             Headers = headers;
             Command = command;

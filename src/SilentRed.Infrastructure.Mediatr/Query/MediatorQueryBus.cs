@@ -10,7 +10,7 @@ namespace SilentRed.Infrastructure.Mediatr
     {
         public Task<TResult> Get<TResult>(
             IQuery<TResult> query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken = new CancellationToken())
         {
             return _mediator.Send(MediatorQueryWrapper.Wrap(query, headers), cancellationToken);

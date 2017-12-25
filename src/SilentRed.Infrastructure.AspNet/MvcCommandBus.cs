@@ -16,7 +16,7 @@ namespace SilentRed.Infrastructure.AspNet
 
         public async Task Send<TCommand>(
             TCommand command,
-            IDictionary<string, object> headers = null,
+            Headers headers = null,
             CancellationToken cancellationToken = default)
             where TCommand : ICommand
         {

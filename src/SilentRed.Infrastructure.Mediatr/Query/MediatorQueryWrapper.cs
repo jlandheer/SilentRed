@@ -35,7 +35,7 @@ namespace SilentRed.Infrastructure.Mediatr
 
         public static QueryWrappedForMediator<TQueryResult> Wrap<TQueryResult>(
             IQuery<TQueryResult> query,
-            IDictionary<string, object> headers)
+            Headers headers)
         {
             var type = query.GetType();
             var returnType = WrapperCache.GetOrAdd(
@@ -59,7 +59,7 @@ namespace SilentRed.Infrastructure.Mediatr
     {
         public IDictionary<string, object> Headers { get; }
 
-        protected QueryWrappedForMediator(IDictionary<string, object> headers)
+        protected QueryWrappedForMediator(Headers headers)
         {
             Headers = headers;
         }
@@ -70,7 +70,7 @@ namespace SilentRed.Infrastructure.Mediatr
     {
         public TQuery Query { get; }
 
-        public QueryWrappedForMediator(TQuery query, IDictionary<string, object> headers) : base(headers)
+        public QueryWrappedForMediator(TQuery query, Headers headers) : base(headers)
         {
             Query = query;
         }

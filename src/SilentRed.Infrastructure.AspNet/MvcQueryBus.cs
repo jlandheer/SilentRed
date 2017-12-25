@@ -16,7 +16,7 @@ namespace SilentRed.Infrastructure.AspNet
 
         public Task<TResult> Get<TResult>(
             IQuery<TResult> query,
-            IDictionary<string, object> headers = null,
+            Headers headers = null,
             CancellationToken cancellationToken = default)
         {
             return _queryBus.Get(query, headers, cancellationToken);

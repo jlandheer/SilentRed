@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.Query
     {
         Task<TResult> Handle(
             TQuery query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken);
     }
 }

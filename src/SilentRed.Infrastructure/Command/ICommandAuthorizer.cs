@@ -11,7 +11,7 @@ namespace SilentRed.Infrastructure.Command
     {
         Task<IEnumerable<Error>> AuthorizeAsync(
             TCommand instance,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellation = default);
     }
 }

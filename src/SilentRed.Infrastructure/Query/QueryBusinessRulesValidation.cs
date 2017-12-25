@@ -11,7 +11,7 @@ namespace SilentRed.Infrastructure.Query
     {
         public async Task<TResult> Handle(
             TQuery query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             var results = await _businessRules

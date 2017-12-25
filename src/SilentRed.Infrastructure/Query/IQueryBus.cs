@@ -8,7 +8,7 @@ namespace SilentRed.Infrastructure.Query
     {
         Task<TResult> Get<TResult>(
             IQuery<TResult> query,
-            IDictionary<string, object> headers = null,
+            Headers headers = null,
             CancellationToken cancellationToken = default);
     }
 }

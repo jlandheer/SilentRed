@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.FluentValidation
         public IDictionary<string, object> Headers { get; }
         public TQuery Query { get; }
 
-        public FluentQueryContext(TQuery query, IDictionary<string, object> headers)
+        public FluentQueryContext(TQuery query, Headers headers)
         {
             Query = query;
             Headers = headers;

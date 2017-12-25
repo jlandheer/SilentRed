@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.Command
     {
         Task Handle(
             TCommand command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken);
     }
 }

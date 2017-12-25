@@ -9,7 +9,7 @@ namespace SilentRed.Infrastructure.Tests
     {
         public Task Handle(
             PipelineTestCommand command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             command.Add(typeof(PipelineTestCommandHandler));

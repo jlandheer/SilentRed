@@ -12,7 +12,7 @@ namespace Studiekring.Business.Customers.Commands
     {
         public async Task Handle(
             NewCustomerCommand command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             var customer = new Customer(Guid.NewGuid());

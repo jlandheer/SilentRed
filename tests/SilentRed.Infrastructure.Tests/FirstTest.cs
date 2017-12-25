@@ -30,7 +30,7 @@ namespace SilentRed.Infrastructure.Tests
             var commandBus = container.GetInstance<ICommandBus>();
 
             var ex = await Act.TryAsync(() => commandBus.Send(new CommandWithEmptyHandler()));
-            Assert.NotNull(ex);
+            Assert.Null(ex);
         }
 
         [Fact]

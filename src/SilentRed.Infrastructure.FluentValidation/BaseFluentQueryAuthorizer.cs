@@ -15,7 +15,7 @@ namespace SilentRed.Infrastructure.FluentValidation
     {
         Task<IEnumerable<Error>> IQueryAuthorizer<TQuery, TResult>.AuthorizeAsync(
             TQuery query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellation)
         {
             return ValidateAsync(new FluentQueryContext<TQuery>(query, headers), cancellation).ToErrors();

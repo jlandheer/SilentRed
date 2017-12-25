@@ -10,7 +10,7 @@ namespace SilentRed.Infrastructure.Query
     {
         Task<IEnumerable<Error>> AuthorizeAsync(
             TQuery query,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellation = default);
     }
 }

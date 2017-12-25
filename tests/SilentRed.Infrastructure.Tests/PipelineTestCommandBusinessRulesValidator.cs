@@ -10,7 +10,7 @@ namespace SilentRed.Infrastructure.Tests
     {
         public Task<IEnumerable<Error>> ValidateAsync(
             PipelineTestCommand command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellation = new CancellationToken())
         {
             command.Add(typeof(PipelineTestCommandBusinessRulesValidator));

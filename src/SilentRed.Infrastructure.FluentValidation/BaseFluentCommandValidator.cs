@@ -15,7 +15,7 @@ namespace SilentRed.Infrastructure.FluentValidation
     {
         Task<IEnumerable<Error>> ICommandValidator<TCommand>.ValidateAsync(
             TCommand command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellation)
         {
             return ValidateAsync(new FluentCommandContext<TCommand>(command, headers), cancellation).ToErrors();

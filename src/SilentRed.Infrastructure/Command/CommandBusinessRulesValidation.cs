@@ -11,7 +11,7 @@ namespace SilentRed.Infrastructure.Command
     {
         public async Task Handle(
             TCommand command,
-            IDictionary<string, object> headers,
+            Headers headers,
             CancellationToken cancellationToken)
         {
             var results = await _businessRules
