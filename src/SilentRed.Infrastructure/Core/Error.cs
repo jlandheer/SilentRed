@@ -4,18 +4,58 @@ using System.Linq;
 
 namespace SilentRed.Infrastructure.Core
 {
-    public class Error
+    public class PropertyError
     {
-        public override string ToString()
+        private PropertyError()
+        { }
+
+        public PropertyError(string propertyName, string error)
+          : this(propertyName, error, null)
+        { }
+
+        public PropertyError(string propertyName, string error, object attemptedValue)
         {
-            return string.Join(", ", Messages);
+            this.PropertyName = propertyName;
+            this.ErrorMessages = new List<string> { error };
+            this.AttemptedValue = attemptedValue;
         }
+
+        public string PropertyName { get; }
 
         public object AttemptedValue { get; }
 
-        public IEnumerable<string> Messages => _messages;
+        public IList<string> ErrorMessages { get; }
+
+        public virtual bool IsValid => this.ErrorMessages.Count == 0;
+    }
+
+    public class ErrorCollection
+    {
+        public virtual bool IsValid => this.Errors.Count == 0;
+
+        public IList<PropertyError> Errors { get; }
+
+        public ErrorCollection()
+        {
+            this.Errors = new List<PropertyError>();
+        }
+
+        public ErrorCollection(IEnumerable<PropertyError> failures)
+        {
+            this.Errors = failures.Where(failure => failure != null && failure.IsValid).ToList();
+        }
+    }
+
+    public class Error
+    {
+        public static readonly IEnumerable<Error> NoErrors = new Error[0];
+
+        public override string ToString() => string.Join(", ", Messages);
+
         public string PropertyName { get; }
-        public static readonly IEnumerable<Error> NoErrors = new List<Error>();
+        public object AttemptedValue { get; }
+
+        public IEnumerable<string> Messages => _messages;
 
         public Error(string errorMessage)
             : this(new[] { errorMessage }, "", null) { }
