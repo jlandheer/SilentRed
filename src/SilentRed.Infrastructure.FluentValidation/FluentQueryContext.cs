@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.FluentValidation
@@ -6,7 +6,7 @@ namespace SilentRed.Infrastructure.FluentValidation
     public class FluentQueryContext<TQuery>
         where TQuery : IQuery
     {
-        public IDictionary<string, object> Headers { get; }
+        public Headers Headers { get; }
         public TQuery Query { get; }
 
         public FluentQueryContext(TQuery query, Headers headers)

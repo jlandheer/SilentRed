@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Reflection;
 using MediatR;
+using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.Mediatr
@@ -57,7 +57,7 @@ namespace SilentRed.Infrastructure.Mediatr
 
     public abstract class QueryWrappedForMediator<TQueryResult> : IRequest<TQueryResult>
     {
-        public IDictionary<string, object> Headers { get; }
+        public Headers Headers { get; }
 
         protected QueryWrappedForMediator(Headers headers)
         {

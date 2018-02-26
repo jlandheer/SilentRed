@@ -1,7 +1,7 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.Mediatr

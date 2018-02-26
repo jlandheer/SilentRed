@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using SilentRed.Infrastructure.Core;
 using SilentRed.Infrastructure.Query;
 
 namespace SilentRed.Infrastructure.AspNet
@@ -23,4 +23,3 @@ namespace SilentRed.Infrastructure.AspNet
         }
     }
 }
-

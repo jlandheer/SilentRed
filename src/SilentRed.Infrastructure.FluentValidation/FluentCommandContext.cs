@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+using SilentRed.Infrastructure.Core;
 
 namespace SilentRed.Infrastructure.FluentValidation
 {
     public class FluentCommandContext<TCommand>
     {
         public TCommand Command { get; }
-        public IDictionary<string, object> Headers { get; }
+        public Headers Headers { get; }
 
         public FluentCommandContext(TCommand command, Headers headers)
         {
